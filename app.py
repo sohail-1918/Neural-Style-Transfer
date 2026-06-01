@@ -45,12 +45,12 @@ def allowed_file(filename):
 
 def style_transfer(content_image, style_image, encoder, decoder, alpha, device):
     content_transform = transforms.Compose([
-        transforms.Resize(128),
+        transforms.Resize(256),
         transforms.ToTensor()
     ])
 
     style_transform = transforms.Compose([
-        transforms.Resize(128),
+        transforms.Resize(256),
         transforms.ToTensor()
     ])
     content_image = content_transform(content_image).unsqueeze(0).to(device)
@@ -140,13 +140,9 @@ def send_image(filename):
 def send_example(filename):
     return send_from_directory('examples', filename)
 
-
-if __name__ == "__main__":
-    import os
-
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
+if __name__ == '__main__':
+    from werkzeug.serving import run_simple
+    run_simple('localhost', 5000, app, use_reloader=True, use_debugger=True)
 
 
 
