@@ -1,0 +1,15 @@
+# Ignore macOS system files
+.DS_Store
+**/.DS_Store
+
+# Ignore Python bytecode directories
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+.venv
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
